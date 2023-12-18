@@ -3,6 +3,7 @@
 import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
+import cv2
 
 class CustomSobel():
     ''' Custom  sobel operator algorithm '''
@@ -29,6 +30,7 @@ class CustomSobel():
 
         grad_magnitude = np.sqrt(sobel_x**2+ sobel_y**2)
         grad_magnitude *= 255.0/grad_magnitude.max()
+        grad_direction = np.arctan2(sobel_y, sobel_x) * (180 / np.pi)
 
         # Display the results
         plt.figure(figsize=(12, 8))
@@ -40,16 +42,39 @@ class CustomSobel():
 
 
 class cv2Sobel():
-    '''Sobel OPerator using cv2.sobel'''
+    '''Sobel Operator using cv2.sobel'''
+    def __init__(self,img):
+        self.img = img
+        
+
+    def apply_sobel(self):
+        sobel_x = cv2.Sobel(self.img, cv2.CV_64F, 1, 0, ksize=3)  
+        sobel_y = cv2.Sobel(self.img, cv2.CV_64F, 0, 1, ksize=3)
+
+        grad_magnitude = np.sqrt(sobel_x**2 + sobel_y**2)
+        grad_direction = np.arctan2(sobel_y, sobel_x) * (180 / np.pi)
 
 
+        # Display the results
+        plt.figure(figsize=(12, 8))
+        plt.subplot(2, 2, 1), plt.imshow(self.img, cmap='gray'), plt.title('Original')
+        plt.subplot(2, 2, 2), plt.imshow(sobel_x, cmap='gray'), plt.title('Sobel X')
+        plt.subplot(2, 2, 3), plt.imshow(sobel_y, cmap='gray'), plt.title('Sobel Y')
+        plt.subplot(2, 2, 4), plt.imshow(grad_magnitude, cmap='gray'), plt.title('Gradient Magnitude')
+        plt.show()
+
+        
 
 if __name__ == '__main__':
-    path_to_image = './wpi.png'
+    path_to_image = './images/1.jpg'
     img = Image.open(path_to_image)
     gray_img = np.array(img.convert('L'))
+
     c = CustomSobel(gray_img)
     c.apply_sobel()
+
+    # C = cv2Sobel(gray_img)
+    # C.apply_sobel()
 
 
 
