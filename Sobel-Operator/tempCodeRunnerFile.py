@@ -1,2 +1,2 @@
 C = cv2Sobel(gray_img)
-    # C.apply_sobel()
+    C.apply_sobel()

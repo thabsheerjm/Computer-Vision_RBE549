@@ -34,6 +34,7 @@ class CustomSobel():
 
         # Display the results
         plt.figure(figsize=(12, 8))
+        plt.suptitle('Custom implementation')
         plt.subplot(2, 2, 1), plt.imshow(self.img, cmap='gray'), plt.title('Original')
         plt.subplot(2, 2, 2), plt.imshow(sobel_x, cmap='gray'), plt.title('Sobel X')
         plt.subplot(2, 2, 3), plt.imshow(sobel_y, cmap='gray'), plt.title('Sobel Y')
@@ -57,6 +58,7 @@ class cv2Sobel():
 
         # Display the results
         plt.figure(figsize=(12, 8))
+        plt.suptitle('CV2 implementation')
         plt.subplot(2, 2, 1), plt.imshow(self.img, cmap='gray'), plt.title('Original')
         plt.subplot(2, 2, 2), plt.imshow(sobel_x, cmap='gray'), plt.title('Sobel X')
         plt.subplot(2, 2, 3), plt.imshow(sobel_y, cmap='gray'), plt.title('Sobel Y')
@@ -73,8 +75,8 @@ if __name__ == '__main__':
     c = CustomSobel(gray_img)
     c.apply_sobel()
 
-    # C = cv2Sobel(gray_img)
-    # C.apply_sobel()
+    C = cv2Sobel(gray_img)
+    C.apply_sobel()
 
 
 
