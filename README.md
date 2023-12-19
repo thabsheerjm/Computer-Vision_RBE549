@@ -35,8 +35,7 @@ Edge detection is the process of identifying sharp changes in image intensity to
     
     ![Gy](./Sobel-Operator/attachments/equations/Gy.png)
 
-- **convolution**: The sobel kernels Gx  and Gy are convolved seperately with the image to produce two derivative apprximations, one for the horizontal direction and one for the vertical
-    Convolution operation  
+- **convolution**: The sobel kernels Gx  and Gy are convolved seperately with the image to produce two derivative approximations, one for the horizontal direction and one for the vertical direction.
      ![Convolution](./Sobel-Operator/attachments/equations/convolution.png)
 
 - **Gradient Magnitude**: The magnitude of the gradient at each pixel gives the edge stength. 
@@ -47,6 +46,6 @@ Edge detection is the process of identifying sharp changes in image intensity to
      Direction    
       ![Direction](./Sobel-Operator/attachments/equations/direction.png)
 
-- ** Sobel Applied**:
+- **Sobel Applied**:
       ![Sobel_results](./Sobel-Operator/attachments/results/sobel.png)
     
