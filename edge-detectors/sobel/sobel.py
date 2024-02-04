@@ -68,7 +68,7 @@ class cv2Sobel():
         
 
 if __name__ == '__main__':
-    path_to_image = './images/1.jpg'
+    path_to_image = 'edge-detectors/images/1.jpg'
     img = Image.open(path_to_image)
     gray_img = np.array(img.convert('L'))
 
