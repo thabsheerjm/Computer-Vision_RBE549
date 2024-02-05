@@ -53,5 +53,13 @@ Edge detection is the process of identifying sharp changes in image intensity to
 - Canny is a multi-stage detection algorithm and the steps are noise reduction, finding the intensity gradient of the image, non-max suppression and hysteresis thresholding.
 - **Noise Reduction**: Noise in images can significantly affect edge detection accuracy. A Gaussian filter smooths the image to reduce noise, preserving edge properties.
   The Gaussian function for a kernel is given by:  
-  ![Gaussian](./edge-detectors/attachments/equations/can1.png)
+  ![Gaussian](./edge-detectors/attachments/equations/can1.png)   
+  where x and y are distances from the center in the horizontal and vertical directions, respectively, and \sigma is the standard deviation of the Gaussian distribution. This filter is convolved with the image to produce a smoothed version.We are using a 5x5 kernel.
+- **Gradient Calculation**:The sobel operator is used to find the intensity gradient of the image.The magnitude and direction fo the gradient at each pixel are calculated.  
+- **Non-Maximum Suppression**: This step thins out the edges. For each pixel, it checks if the pixel is the local maximum in its gradient direction. If not, the pixel is set to 0 (black), effectively thinning the edges.  
+- **Double Thresholding**: To further remove noise and false positives, pixels are classified as strong, weak, or non-relevant based on their intensity. Strong edges are immediately included as part of the final edge, while weak edges are included only if they are connected to strong edges.
+Weak edges that are not connected to strong edges are removed. This step ensures that the final image has only strong edges, providing clear and distinct boundaries.- ** Edge tracking by Hysteresis**: Weak edges that are not connected to strong edges are removed. This step ensures that the final image has only strong edges, providing clear and distinct boundaries.
+ 
+- **Results on Canny detector**:  
+  
   
