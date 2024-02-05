@@ -49,3 +49,5 @@ Edge detection is the process of identifying sharp changes in image intensity to
 - **Sobel Applied**:
       ![Sobel_results](./edge-detectors/attachments/results/sobel.png)
     
+### 2. Canny Edge detector 
+- Canny is a multi-stage detection algorithm and the steps are noise reduction, finding the intensity gradient of the image, non-max suppression and hysteresis thresholding.
