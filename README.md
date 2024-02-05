@@ -51,3 +51,7 @@ Edge detection is the process of identifying sharp changes in image intensity to
     
 ### 2. Canny Edge detector 
 - Canny is a multi-stage detection algorithm and the steps are noise reduction, finding the intensity gradient of the image, non-max suppression and hysteresis thresholding.
+- **Noise Reduction**: Noise in images can significantly affect edge detection accuracy. A Gaussian filter smooths the image to reduce noise, preserving edge properties.
+  The Gaussian function for a kernel is given by:
+  ![Gaussian](./edge-detectors/attachments/equations/can1.png)
+  
