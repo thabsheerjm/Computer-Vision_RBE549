@@ -5,19 +5,21 @@ import cv2
 from scipy.ndimage import convolve
 
 class canny:
+
     def __init__ (self, image, gaussian_kernel_size=5):
+        self.sigma = 1.0
         self.kernel_size = gaussian_kernel_size #5x5 kernel
         self.gray_img = image
         self.gaussian = self.gaussian_kernel()
         self.lowthreshold=0.05
         self.highthreshold=0.15
+        
 
-    def gaussian_kernel(self,sigma=1.0):
-        size = self.kernel_size
-        size = int(size)//2
+    def gaussian_kernel(self):
+        size = int(self.kernel_size)//2
         x,y = np.mgrid[-size:size+1,-size:size+1]
-        normal = 1/(2.0 *np.pi *sigma**2)
-        g= np.exp(-((x**2 + y**2)/(2.0*sigma**2)))* normal
+        normal = 1/(2.0 *np.pi *self.sigma**2)
+        g= np.exp(-((x**2 + y**2)/(2.0*self.sigma**2)))* normal
 
         return g
     
@@ -44,12 +46,16 @@ class canny:
         return output
     
     def sobel_filters(self, image):
-        Kx = np.array([[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]])
-        Ky = np.array([[1, 2, 1], [0, 0, 0], [-1, -2, -1]])
-        Ix = self.convolve(image, Kx)
-        Iy = self.convolve(image, Ky)
-        G = np.sqrt(Ix**2 + Iy**2)
+        Kx = np.array([[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]],np.float32)
+        Ky = np.array([[1, 2, 1], [0, 0, 0], [-1, -2, -1]],np.float32)
+        Ix = convolve(image, Kx)
+        Iy = convolve(image, Ky)
+
+        G = np.hypot(Ix, Iy)
+        G = G / G.max() * 255 
+            
         theta = np.arctan2(Iy, Ix)
+
         return G, theta
     
     def non_max_suppression(self,gradient, theta):
@@ -85,12 +91,15 @@ class canny:
         return Z
         
     def threshold(self,image, low, high):
-        res = np.zeros(image.shape, dtype=np.float32)
-        weak = 25
+        res = np.zeros(image.shape, dtype=np.int32)
+        weak = 75
         strong = 255
+
         strong_i, strong_j = np.where(image >= high)
         zeros_i, zeros_j = np.where(image < low)
+
         weak_i, weak_j = np.where((image <= high) & (image >= low))
+        
         res[strong_i, strong_j] = strong
         res[weak_i, weak_j] = weak
         return res, weak, strong
@@ -124,7 +133,7 @@ class canny:
         threshold_img, weak, strong = self.threshold(nms_img, self.lowthreshold*np.max(nms_img), self.highthreshold*np.max(nms_img))
 
         # # Step5 : Edge tracking by hysteresis
-        canny_img = self.hysteresis(threshold_img, weak,strong)
+        canny_img = self.hysteresis(threshold_img, weak)
 
         return canny_img
     
@@ -138,10 +147,14 @@ if __name__ == '__main__':
 
     # Apply canny edge detector
     canny_detect = canny(gray_img)
-    canny_image = canny_detect.canny_detector()
+    canny_image = canny_detect.canny_detector().astype(np.uint8)
     
     cv2.imshow('Original image',gray_img)
     cv2.imshow('Canny edge detector',canny_image)
-    
+
     cv2.waitKey(0)
    
+
+
+
+
