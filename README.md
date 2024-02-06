@@ -60,6 +60,7 @@ Edge detection is the process of identifying sharp changes in image intensity to
 - **Double Thresholding**: To further remove noise and false positives, pixels are classified as strong, weak, or non-relevant based on their intensity. Strong edges are immediately included as part of the final edge, while weak edges are included only if they are connected to strong edges.
 Weak edges that are not connected to strong edges are removed. This step ensures that the final image has only strong edges, providing clear and distinct boundaries.- ** Edge tracking by Hysteresis**: Weak edges that are not connected to strong edges are removed. This step ensures that the final image has only strong edges, providing clear and distinct boundaries.
  
-- **Results on Canny detector**:  
+- **Results on Canny detector**:
+  ![Canny](./edge-detectors/attachments/results/can.png) 
   
   
