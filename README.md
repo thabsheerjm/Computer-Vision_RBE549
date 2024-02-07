@@ -74,6 +74,10 @@ The method is explained here [[1]](https://rbe549.github.io/fall2022/hw/hw0/)
 #### Results :   
 
 ![deep](./edge-detectors/attachments/results/edge_res.png)
+
+## Acknowledgement 
+
+A part of this project is done towards the requirement for [RBE549](https://rbe549.github.io/fall2022/hw/hw0/) at WPI
   
 ## References 
 [1] [RBE549-HW1](https://rbe549.github.io/fall2022/hw/hw0/)  
