@@ -65,5 +65,5 @@ Weak edges that are not connected to strong edges are removed. This step ensures
   
   
 ## References 
-[1] [RBE549-HW1](https://rbe549.github.io/fall2022/hw/hw0/)
+[1] [RBE549-HW1](https://rbe549.github.io/fall2022/hw/hw0/)  
 [2] [Canny Edge Detection Step by Step in Python — Computer Vision](https://towardsdatascience.com/canny-edge-detection-step-by-step-in-python-computer-vision-b49c3a2d8123)
