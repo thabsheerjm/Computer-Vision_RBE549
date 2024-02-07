@@ -62,7 +62,17 @@ Weak edges that are not connected to strong edges are removed. This step ensures
  
 - **Results on Canny detector**:
   ![Canny](./edge-detectors/attachments/results/can.png) 
-  
+
+### 3. Pb-lite 
+
+The method is explained here [[1]](https://rbe549.github.io/fall2022/hw/hw0/) 
+
+### 4. Deep Learning for Edge detecttion
+
+The method is explained here [[1]](https://rbe549.github.io/fall2022/hw/hw0/) 
+
+#### Results :   
+
   
 ## References 
 [1] [RBE549-HW1](https://rbe549.github.io/fall2022/hw/hw0/)  
