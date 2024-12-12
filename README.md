@@ -71,9 +71,6 @@ The method is explained here [[1]](https://rbe549.github.io/fall2022/hw/hw0/)
 
 The method is explained here [[1]](https://rbe549.github.io/fall2022/hw/hw0/) 
 
-#### Results :   
-
-![deep](./edge-detectors/attachments/results/edge_res.png)
 
 ## Acknowledgement 
 
